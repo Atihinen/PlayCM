@@ -1,7 +1,28 @@
-@(message: String)
+@(blogposts: List[BlogPost], blogpostForm: Form[(String, String)])
+@import helper._
 
-@main("Welcome to Play") {
+@main("Blogpost list") {
 
-    @play20.welcome(message)
+    <h1>@blogposts.size blogpost(s)</h1>
+    <ul>
+        @blogposts.map { blogpost =>
+            <li title="@blogpost.content">
+                @blogpost.title
+
+                @form(routes.Application.deleteBlogpost(blogpost.id)) {
+                    <input type="submit" value="Delete" />
+                }
+            </li>
+       }
+    </ul>
+
+    <h2>Add new blogpost</h2>
+    @form(routes.Application.newBlogpost) {
+        @inputText(blogpostForm("title"))
+        @inputText(blogpostForm("content"))
+
+        <input type="submit" value="Create" />
+
+    }
 
 }
