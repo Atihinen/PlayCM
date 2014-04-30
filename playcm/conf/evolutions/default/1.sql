@@ -20,7 +20,7 @@ CREATE TABLE user (
 
 INSERT INTO user (username, password, email, biography) VALUES (
 'admin',
-'password',
+'W6ph5Mm5Pz8GgiULbPgzG37mj9g=',
 'admin@admin.fi',
 'ir admin'
 );

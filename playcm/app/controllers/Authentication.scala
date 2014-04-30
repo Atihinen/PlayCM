@@ -12,13 +12,14 @@ import views._
 
 object Authentication extends Controller {
 
+  val md = java.security.MessageDigest.getInstance("SHA-1")
 
   val loginForm = Form(
     tuple(
       "username" -> text,
       "password" -> text
     ) verifying ("Invalid username or password", result => result match {
-      case (username, password) => User.authenticate(username, password).isDefined
+      case (username, password) => User.authenticate(username, new sun.misc.BASE64Encoder().encode(md.digest(password.getBytes)).toString()).isDefined
     })
   )
 
