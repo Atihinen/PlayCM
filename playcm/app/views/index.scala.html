@@ -1,7 +1,17 @@
-@(blogposts: List[BlogPost], blogpostForm: Form[(String, String)])
+@(blogposts: List[BlogPost], users: List[User], blogpostForm: Form[(String, String)])
 @import helper._
 
 @main("Blogpost list") {
+
+     <h1>Users</h1>
+    <ul>
+        @users.map { user =>
+            <li>
+                @user.username <br/>
+                @user.password
+            </li>
+        }
+    </ul>
 
     <h1>@blogposts.size blogpost(s)</h1>
     <ul>

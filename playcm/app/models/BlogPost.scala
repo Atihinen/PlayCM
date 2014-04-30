@@ -13,7 +13,7 @@ case class BlogPost(id: Long, title: String, content: String)
 object BlogPost {
 
   val blogpost = {
-    get[Long]("id") ~
+      get[Long]("id") ~
       get[String]("title") ~
       get[String]("content") map {
       case id~title~content => BlogPost(id, title, content)

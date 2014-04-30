@@ -9,7 +9,27 @@ CREATE TABLE blogpost (
     content text
 );
 
+CREATE SEQUENCE user_id_seq;
+CREATE TABLE user (
+    id integer NOT NULL DEFAULT nextval('user_id_seq'),
+    username varchar(60),
+    password varchar(255),
+    email varchar(60),
+    biography text
+);
+
+INSERT INTO user (username, password, email, biography) VALUES (
+'admin',
+'password',
+'admin@admin.fi',
+'ir admin'
+);
+
+
 # --- !Downs
 
 DROP TABLE task;
-DROP SEQUENCE task_id_seq;
+DROP SEQUENCE blogpost_id_seq;
+
+DROP TABLE user;
+DROP SEQUENCE user_id_seq;

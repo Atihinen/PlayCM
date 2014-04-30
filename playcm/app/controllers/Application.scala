@@ -6,6 +6,7 @@ import play.api.data._
 import play.api.data.Forms._
 
 import models.BlogPost
+import models.User
 
 
 object Application extends Controller {
@@ -22,12 +23,12 @@ object Application extends Controller {
   }
 
   def blogposts = Action {
-    Ok(views.html.index(BlogPost.all(), blogpostForm))
+    Ok(views.html.index(BlogPost.all(), User.all(), blogpostForm))
   }
 
   def newBlogpost = Action { implicit  request =>
     blogpostForm.bindFromRequest.fold(
-      errors => BadRequest(views.html.index(BlogPost.all(), errors)),
+      errors => BadRequest(views.html.index(BlogPost.all(), User.all(), errors)),
       {
         case (title, content) => {
           BlogPost.create(title, content)
