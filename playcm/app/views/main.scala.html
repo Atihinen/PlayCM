@@ -1,5 +1,5 @@
 @(title: String)(content: Html)
-
+@import helper._
 <!DOCTYPE html>
 
 <html>
@@ -10,6 +10,15 @@
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="@routes.Application.newBlogpost">New blogpost</a></li>
+                    <li><a href="@routes.Authentication.login">Login</a></li>
+                    <li><a href="@routes.Authentication.logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
         @content
     </body>
 </html>

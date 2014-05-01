@@ -8,8 +8,9 @@ GET     /                           controllers.Application.index
 #Application
 
 GET     /blogposts                  controllers.Application.blogposts
-POST    /blogposts                  controllers.Application.newBlogpost
+POST    /blogposts                  controllers.Application.createBlogpost
 POST    /blogposts/:id/delete       controllers.Application.deleteBlogpost(id: Long)
+GET     /blogposts/new              controllers.Application.newBlogpost
 
 #Authentication
 

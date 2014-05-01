@@ -1,0 +1,11 @@
+@(blogpostForm: Form[(String, String)])
+@import helper._
+
+@main("Create blogpost"){
+    <h2>Add new blogpost</h2>
+    @form(routes.Application.createBlogpost) {
+        @inputText(blogpostForm("title"))
+        @inputText(blogpostForm("content"))
+        <input type="submit" value="Create" />
+    }
+}
