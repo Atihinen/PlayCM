@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(content: Html)(implicit session: Session)
 @import helper._
 <!DOCTYPE html>
 
@@ -13,9 +13,12 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="@routes.Application.newBlogpost">New blogpost</a></li>
-                    <li><a href="@routes.Authentication.login">Login</a></li>
-                    <li><a href="@routes.Authentication.logout">Logout</a></li>
+                    @session.get("username").map {user =>
+                        <li><a href="@routes.Application.newBlogpost">New blogpost</a></li>
+                        <li><a href="@routes.Authentication.logout">Logout</a></li>
+                    }.getOrElse{
+                        <li><a href="@routes.Authentication.login">Login</a></li>
+                    }
                 </ul>
             </nav>
         </header>

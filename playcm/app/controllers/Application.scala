@@ -18,15 +18,15 @@ object Application extends Controller with Secured {
     )
   )
 
-  def index = Action {
+  def index = Action { implicit request =>
     Ok(views.html.index(BlogPost.all(), User.all(), blogpostForm))
   }
 
-  def blogposts = Action {
+  def blogposts = Action { implicit request =>
     Ok(views.html.index(BlogPost.all(), User.all(), blogpostForm))
   }
 
-  def newBlogpost = IsAuthenticated { username => _ =>
+  def newBlogpost = IsAuthenticated { username => implicit request =>
     User.findByUsername(username).map { user =>
       Ok(views.html.blogpost.item(blogpostForm))
     }.getOrElse(Forbidden)

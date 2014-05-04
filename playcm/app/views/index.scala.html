@@ -1,4 +1,4 @@
-@(blogposts: List[BlogPost], users: List[User], blogpostForm: Form[(String, String)])
+@(blogposts: List[BlogPost], users: List[User], blogpostForm: Form[(String, String)])(implicit session: Session)
 @import helper._
 
 @main("Blogpost list") {
