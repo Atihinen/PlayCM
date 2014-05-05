@@ -1,4 +1,4 @@
-@(blogposts: List[BlogPost], users: List[User], blogpostForm: Form[(String, String)])(implicit session: Session)
+@(blogposts: List[BlogPost], users: List[User], blogpostForm: Form[(String, String, String)])(implicit session: Session)
 @import helper._
 
 @main("Blogpost list") {
@@ -17,7 +17,8 @@
     <ul>
         @blogposts.map { blogpost =>
             <li title="@blogpost.content">
-                @blogpost.title
+                @blogpost.title <br />
+                Created at: <i>@blogpost.created_at</i>
 
                 @form(routes.Application.deleteBlogpost(blogpost.id)) {
                     <input type="submit" value="Delete" />

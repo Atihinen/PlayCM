@@ -6,7 +6,10 @@ CREATE SEQUENCE blogpost_id_seq;
 CREATE TABLE blogpost (
     id integer NOT NULL DEFAULT nextval('blogpost_id_seq'),
     title varchar(255),
-    content text
+    content text,
+    created_at timestamp,
+    updated_at timestamp,
+    username varchar(60)
 );
 
 CREATE SEQUENCE user_id_seq;
@@ -17,6 +20,8 @@ CREATE TABLE user (
     email varchar(60),
     biography text
 );
+
+ALTER TABLE blogpost ADD CONSTRAINT fk_user_id FOREIGN KEY (username) REFERENCES user (id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 INSERT INTO user (username, password, email, biography) VALUES (
 'admin',

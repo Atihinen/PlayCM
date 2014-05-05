@@ -14,7 +14,8 @@ object Application extends Controller with Secured {
   val blogpostForm = Form(
     tuple(
       "title" -> nonEmptyText,
-      "content" -> nonEmptyText
+      "content" -> nonEmptyText,
+      "author" -> nonEmptyText
     )
   )
 
@@ -36,8 +37,8 @@ object Application extends Controller with Secured {
     blogpostForm.bindFromRequest.fold(
       errors => BadRequest(views.html.index(BlogPost.all(), User.all(), errors)),
       {
-        case (title, content) => {
-          BlogPost.create(title, content)
+        case (title, content, author) => {
+          BlogPost.create(title, content, author)
           Redirect(routes.Application.blogposts)
         }
       }

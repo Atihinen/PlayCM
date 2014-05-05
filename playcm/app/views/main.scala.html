@@ -15,6 +15,7 @@
                 <ul>
                     @session.get("username").map {user =>
                         <li><a href="@routes.Application.newBlogpost">New blogpost</a></li>
+                        <li>Welcome @user</li>
                         <li><a href="@routes.Authentication.logout">Logout</a></li>
                     }.getOrElse{
                         <li><a href="@routes.Authentication.login">Login</a></li>

@@ -1,4 +1,4 @@
-@(blogpostForm: Form[(String, String)])(implicit session: Session)
+@(blogpostForm: Form[(String, String, String)])(implicit session: Session)
 @import helper._
 
 @main("Create blogpost"){
@@ -6,6 +6,7 @@
     @form(routes.Application.createBlogpost) {
         @inputText(blogpostForm("title"))
         @inputText(blogpostForm("content"))
+        @inputText(blogpostForm("author"))
         <input type="submit" value="Create" />
     }
 }
